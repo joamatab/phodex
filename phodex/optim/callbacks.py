@@ -25,9 +25,7 @@ def log_simple(state_dict: StateDict | None = None, logscale: bool = False) -> C
         state_dict = {"obj_hist": [], "cur_iter": 0}
 
     def post(x: np.ndarray):
-        if logscale:
-            return 10 * np.log10(x)
-        return x
+        return 10 * np.log10(x) if logscale else x
 
     def _callback(x, f0, grad) -> None:
         state_dict["obj_hist"].append(f0)
@@ -87,9 +85,7 @@ def log_epigraph(
         state_dict = {"obj_hist": [], "epivar_hist": [], "cur_iter": 0}
 
     def post(x: np.ndarray) -> np.ndarray:
-        if logscale:
-            return 10 * np.log10(x)
-        return x
+        return 10 * np.log10(x) if logscale else x
 
     def _callback(x: np.ndarray, f0: float, grad: np.ndarray) -> None:
         t = x[0]

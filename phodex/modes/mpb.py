@@ -90,7 +90,7 @@ def plot_bands(
         fig, ax = plt.subplots(1, 1, figsize=(6, 4), tight_layout=True)
 
     fcen = 1 / lcen
-    max_freq = np.max([b for b in bands.values()])
+    max_freq = np.max(list(bands.values()))
 
     colors = ["tab:blue", "tab:red"]
     for (k, v), c in zip(bands.items(), colors):
