@@ -105,7 +105,7 @@ class MultiportDevice2D:
         self._check_sources()
 
     def _check_neff(self) -> None:
-        if len(set(p.width for p in self.source_ports)) > 1:
+        if len({p.width for p in self.source_ports}) > 1:
             raise ValueError(
                 "Source regions have different widths and thus excite different modes. "
                 "Cannot do effective index calculations with different modes!"

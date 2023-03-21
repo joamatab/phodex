@@ -15,7 +15,7 @@ class FilteredStream:
         return getattr(self.stream, attr_name)
 
     def write(self, data: str) -> None:
-        if any([p.search(data) for p in self.patterns]):
+        if any(p.search(data) for p in self.patterns):
             self.stream.write(data + "\n")
 
     def flush(self) -> None:
